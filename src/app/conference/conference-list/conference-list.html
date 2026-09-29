@@ -1,0 +1,10 @@
+<ul>
+  @for (conference of conferences; track $index) {
+    <app-conference-details
+      [conference]="conference"
+      (increment)="increment()"
+    ></app-conference-details>
+  }
+</ul>
+
+<p>Count: {{ count }}</p>

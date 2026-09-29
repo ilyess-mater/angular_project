@@ -1,0 +1,10 @@
+:host {
+  display: block;
+}
+
+.home {
+  border: 3px solid #b8d000;
+  text-align: center;
+  padding: 4rem 1rem;
+  min-height: 300px;
+}

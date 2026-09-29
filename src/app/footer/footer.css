@@ -1,0 +1,9 @@
+:host {
+  display: block;
+}
+
+.footer {
+  border: 3px solid #2b3df0;
+  text-align: center;
+  padding: 1rem;
+}
