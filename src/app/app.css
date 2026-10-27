@@ -3,18 +3,12 @@
 }
 
 .app-layout {
-  border: 3px solid #0aa600;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  max-width: 600px;
-  margin: 0 auto;
-  min-height: 100dvh;
-  box-sizing: border-box;
+  background: var(--bg);
 }
 
 .content {
   flex: 1;
-  display: block;
 }

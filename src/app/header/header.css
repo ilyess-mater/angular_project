@@ -3,12 +3,60 @@
 }
 
 .header {
-  border: 3px solid #2b3df0;
-  text-align: center;
-  padding: 1.5rem 1rem;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  height: 64px;
+  box-shadow: 0 2px 12px rgba(79, 70, 229, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
-nav a {
-  text-decoration: none;
-  font-weight: 600;
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.brand-icon {
+  font-size: 1.4rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav a {
+  color: rgba(255, 255, 255, 0.85);
+  padding: 0.45rem 1rem;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.nav a:hover,
+.nav a.active {
+  color: white;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.nav-btn {
+  background: white !important;
+  color: var(--primary) !important;
+  font-weight: 600 !important;
+  padding: 0.45rem 1.1rem !important;
+}
+
+.nav-btn:hover {
+  background: #e0e7ff !important;
 }

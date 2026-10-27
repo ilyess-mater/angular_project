@@ -1,6 +1,65 @@
-<li>
-  <h3>{{ conference().name }}</h3>
-  <p>Date: {{ conference().date }}</p>
-  <p>Location: {{ conference().location }}</p>
-  <button (click)="incrementCount()">+</button>
-</li>
+<div class="page">
+  <a routerLink="/list" class="back-link">← Retour à la liste</a>
+
+  @if (loading()) {
+    <div class="state-container">
+      <div class="spinner"></div>
+      <p>Chargement…</p>
+    </div>
+  }
+
+  @if (error()) {
+    <div class="state-container error-state">
+      <div class="state-icon">⚠️</div>
+      <p>{{ error() }}</p>
+    </div>
+  }
+
+  @if (!loading() && !error() && conference()) {
+    <div class="detail-card">
+      <div class="detail-top">
+        <div class="detail-icon">🎙️</div>
+        <h1 class="detail-title">{{ conference()!.title }}</h1>
+        <p class="detail-date">📅 {{ conference()!.date }}</p>
+      </div>
+
+      <div class="detail-body">
+        <div class="detail-section">
+          <h3>Description</h3>
+          <p>{{ conference()!.description }}</p>
+        </div>
+
+        <div class="detail-row">
+          <div class="detail-info">
+            <span class="info-icon">📍</span>
+            <div>
+              <div class="info-label">Lieu</div>
+              <div class="info-value">{{ conference()!.location }}</div>
+            </div>
+          </div>
+          <div class="detail-info">
+            <span class="info-icon">🪑</span>
+            <div>
+              <div class="info-label">Places disponibles</div>
+              <div class="info-value">{{ conference()!.nbPlaces }}</div>
+            </div>
+          </div>
+          <div class="detail-info">
+            <span class="info-icon">💰</span>
+            <div>
+              <div class="info-label">Prix</div>
+              <div class="info-value price">
+                {{ conference()!.price === 0 ? 'Gratuit' : conference()!.price + ' DT' }}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-actions">
+          <a [routerLink]="['/edit', conference()!.id]" class="btn-edit">✏️ Modifier</a>
+          <a routerLink="/list" class="btn-back">Retour à la liste</a>
+        </div>
+      </div>
+    </div>
+  }
+</div>

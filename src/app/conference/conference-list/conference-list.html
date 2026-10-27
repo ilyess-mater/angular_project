@@ -1,10 +1,73 @@
-<ul>
-  @for (conference of conferences; track $index) {
-    <app-conference-details
-      [conference]="conference"
-      (increment)="increment()"
-    ></app-conference-details>
-  }
-</ul>
+<div class="page">
+  <!-- Page Header -->
+  <div class="page-header">
+    <div>
+      <h1 class="page-title">Mes conférences</h1>
+      <p class="page-subtitle">Découvrez et gérez vos événements</p>
+    </div>
+    <a routerLink="/add" class="btn-add">+ Ajouter une conférence</a>
+  </div>
 
-<p>Count: {{ count }}</p>
+  <!-- Loading State -->
+  @if (loading()) {
+    <div class="state-container">
+      <div class="spinner"></div>
+      <p>Chargement des conférences…</p>
+    </div>
+  }
+
+  <!-- Error State -->
+  @if (error()) {
+    <div class="state-container error-state">
+      <div class="state-icon">⚠️</div>
+      <p>{{ error() }}</p>
+      <button class="btn-retry" (click)="loadConferences()">Réessayer</button>
+    </div>
+  }
+
+  <!-- Empty State -->
+  @if (!loading() && !error() && conferences().length === 0) {
+    <div class="state-container empty-state">
+      <div class="state-icon">🗂️</div>
+      <h3>Aucune conférence trouvée</h3>
+      <p>Commencez par ajouter votre première conférence.</p>
+      <a routerLink="/add" class="btn-add">+ Ajouter</a>
+    </div>
+  }
+
+  <!-- Cards Grid -->
+  @if (!loading() && !error() && conferences().length > 0) {
+    <div class="cards-grid">
+      @for (conf of conferences(); track conf.id) {
+        <div class="card">
+          <div class="card-top">
+            <div class="card-icon">🎙️</div>
+            <h2 class="card-title">{{ conf.title }}</h2>
+            <p class="card-date">{{ conf.date }}</p>
+          </div>
+
+          <div class="card-body">
+            <p class="card-desc">{{ conf.description }}</p>
+
+            <div class="card-meta">
+              <span class="meta-item">
+                <span class="meta-icon">📍</span>{{ conf.location }}
+              </span>
+              <span class="meta-item">
+                <span class="meta-icon">🪑</span>{{ conf.nbPlaces }} places
+              </span>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <span class="price">{{ conf.price === 0 ? 'Gratuit' : conf.price + ' DT' }}</span>
+            <div class="card-actions">
+              <button class="btn-edit" [routerLink]="['/edit', conf.id]">✏️ Modifier</button>
+              <button class="btn-delete" (click)="deleteConference(conf.id!)">🗑️ Supprimer</button>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  }
+</div>

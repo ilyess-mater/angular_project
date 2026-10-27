@@ -1,0 +1,83 @@
+<div class="page">
+  <a routerLink="/list" class="back-link">← Retour à la liste</a>
+
+  <div class="form-card">
+    <div class="form-header">
+      <div class="form-icon">🎙️</div>
+      <h1>Ajouter une conférence</h1>
+      <p>Remplissez les informations de votre événement</p>
+    </div>
+
+    @if (submitError()) {
+      <div class="alert alert-error">⚠️ {{ submitError() }}</div>
+    }
+
+    <form [formGroup]="conferenceForm" (ngSubmit)="submitForm()" class="form-body">
+
+      <!-- Title -->
+      <div class="field" [class.field-error]="title?.invalid && title?.touched">
+        <label for="title">Titre de la conférence *</label>
+        <input id="title" formControlName="title" placeholder="Ex : Angular Day" />
+        @if (title?.hasError('required') && title?.touched) {
+          <span class="error-msg">Le titre est obligatoire</span>
+        }
+        @if (title?.hasError('minlength') && title?.touched) {
+          <span class="error-msg">Au moins 3 caractères</span>
+        }
+      </div>
+
+      <!-- Description -->
+      <div class="field" [class.field-error]="description?.invalid && description?.touched">
+        <label for="desc">Description *</label>
+        <textarea id="desc" formControlName="description" rows="3" placeholder="Décrivez votre conférence"></textarea>
+        @if (description?.hasError('required') && description?.touched) {
+          <span class="error-msg">La description est obligatoire</span>
+        }
+      </div>
+
+      <!-- Location -->
+      <div class="field" [class.field-error]="location?.invalid && location?.touched">
+        <label for="location">Lieu *</label>
+        <input id="location" formControlName="location" placeholder="Ex : ESPRIT, Ghazela" />
+        @if (location?.hasError('required') && location?.touched) {
+          <span class="error-msg">Le lieu est obligatoire</span>
+        }
+      </div>
+
+      <!-- Date & Price row -->
+      <div class="field-row">
+        <div class="field" [class.field-error]="date?.invalid && date?.touched">
+          <label for="date">Date *</label>
+          <input id="date" type="date" formControlName="date" />
+          @if (date?.hasError('required') && date?.touched) {
+            <span class="error-msg">La date est obligatoire</span>
+          }
+        </div>
+
+        <div class="field" [class.field-error]="price?.invalid && price?.touched">
+          <label for="price">Prix (DT) *</label>
+          <input id="price" type="number" formControlName="price" min="0" placeholder="0" />
+          @if (price?.hasError('min') && price?.touched) {
+            <span class="error-msg">Le prix ne peut pas être négatif</span>
+          }
+        </div>
+      </div>
+
+      <!-- NbPlaces -->
+      <div class="field" [class.field-error]="nbPlaces?.invalid && nbPlaces?.touched">
+        <label for="places">Nombre de places *</label>
+        <input id="places" type="number" formControlName="nbPlaces" min="1" placeholder="1" />
+        @if (nbPlaces?.hasError('min') && nbPlaces?.touched) {
+          <span class="error-msg">Au moins 1 place</span>
+        }
+      </div>
+
+      <div class="form-actions">
+        <a routerLink="/list" class="btn-cancel">Annuler</a>
+        <button type="submit" class="btn-submit" [disabled]="submitting()">
+          {{ submitting() ? 'Enregistrement…' : '✅ Ajouter la conférence' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

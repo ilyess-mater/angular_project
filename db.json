@@ -1,0 +1,32 @@
+{
+  "conferences": [
+    {
+      "title": "Angular Day",
+      "description": "Journée de conférences Angular",
+      "location": "ESPRIT, Ghazela",
+      "date": "2026-11-05",
+      "price": 20,
+      "nbPlaces": 50,
+      "id": "1"
+    },
+    {
+      "title": "React Summit",
+      "description": "La grande conférence React de l'année",
+      "location": "El Ghazala, Tunis",
+      "date": "2026-12-10",
+      "price": 15,
+      "nbPlaces": 30,
+      "id": "2"
+    },
+    {
+      "title": "DevFest Tunisia",
+      "description": "Google Developer Festival en Tunisie",
+      "location": "Lac 2, Tunis",
+      "date": "2027-01-20",
+      "price": 0,
+      "nbPlaces": 200,
+      "id": "3"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}

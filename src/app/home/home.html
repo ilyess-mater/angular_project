@@ -1,10 +1,28 @@
-<section class="home">
-  <h1>Home C</h1>
-  <p>Welcome to the Home component.</p>
-
-  <h1>Compteur simple: {{ count }}</h1>
-  <button (click)="incrementSimple()">Incrémenter</button>
-
-  <h1>Compteur signal: {{ counts() }}</h1>
-  <button (click)="increment()">Incrémenter</button>
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">🎙️ Plateforme de Conférences</div>
+    <h1 class="hero-title">Gérez vos conférences<br><span class="gradient-text">facilement</span></h1>
+    <p class="hero-desc">
+      Découvrez, ajoutez et gérez toutes vos conférences en un seul endroit.
+      Une interface moderne pour une expérience optimale.
+    </p>
+    <div class="hero-actions">
+      <a routerLink="/list" class="btn btn-primary">Voir les conférences</a>
+      <a routerLink="/add" class="btn btn-outline">+ Ajouter une conférence</a>
+    </div>
+  </div>
+  <div class="hero-illustration">
+    <div class="illus-card">
+      <div class="illus-icon">🗓️</div>
+      <div class="illus-text">Planifiez</div>
+    </div>
+    <div class="illus-card">
+      <div class="illus-icon">👥</div>
+      <div class="illus-text">Gérez</div>
+    </div>
+    <div class="illus-card">
+      <div class="illus-icon">🚀</div>
+      <div class="illus-text">Succédez</div>
+    </div>
+  </div>
 </section>

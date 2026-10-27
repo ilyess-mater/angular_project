@@ -1,22 +1,11 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class Home {
-
-  count=0;
-  //signal
-  counts = signal(0);
-
-  incrementSimple() {
-    this.count++;
-  }
-
-  increment() {
-    this.counts.update(v => v + 1);
-}}
+export class Home {}

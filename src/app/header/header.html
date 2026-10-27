@@ -1,7 +1,11 @@
 <header class="header">
-  <nav aria-label="Main navigation">
-    <a routerLink="/">Home</a>
-    <a routerLink="/conferences">Conferences</a>
+  <div class="header-brand">
+    <span class="brand-icon">🎙️</span>
+    <span class="brand-name">ConférenceApp</span>
+  </div>
+  <nav class="nav">
+    <a routerLink="/home" routerLinkActive="active">Accueil</a>
+    <a routerLink="/list" routerLinkActive="active">Conférences</a>
+    <a routerLink="/add" class="nav-btn" routerLinkActive="active">+ Ajouter</a>
   </nav>
-  <p>header C</p>
 </header>
